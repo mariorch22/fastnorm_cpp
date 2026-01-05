@@ -1,6 +1,6 @@
 [project]
 name = "fastnorm_cpp"
-version = "0.1.2"
+version = "0.1.3"
 authors = [{name = "Mario Raach", email = "marioraach01@gmail.com"}]
 description = "Test: A super fast C++ implementation of RMSNorm"
 readme = "README.md"
