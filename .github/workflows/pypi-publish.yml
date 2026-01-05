@@ -1,0 +1,40 @@
+name: Build and publish to PyPI
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build_wheels:
+    name: Build wheels on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build wheels
+        uses: pypa/cibuildwheel@v2.22.0 # Nutzt scikit-build-core automatisch
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cibuildwheel-wheels-${{ matrix.os }}-${{ strategy.job-index }}
+          path: ./wheelhouse/*.whl
+
+  publish:
+    needs: [build_wheels]
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write # Wichtig für Trusted Publishing
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: cibuildwheel-wheels-*
+          path: dist
+          merge-multiple: true
+
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1

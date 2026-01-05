@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+.venv/
+*.py[cod]
+dist/
+build/
+
+# C++ / CMake
+_skbuild/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+*.so
+*.pyd
+*.out
+
+# IDEs
+.vscode/
+.idea/
