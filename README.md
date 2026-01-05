@@ -6,7 +6,7 @@ High-performance C++ implementation of RMSNorm for Python.
 
 ### From Source
 ```bash
-git clone [https://github.com/DEIN_USERNAME/fastnorm-cpp.git](https://github.com/DEIN_USERNAME/fastnorm-cpp.git)
+git clone [https://github.com/mariorch22/fastnorm_cpp.git](https://github.com/mariorch22/fastnorm_cpp.git)
 cd fastnorm-cpp
 uv pip install -e .
 ```
